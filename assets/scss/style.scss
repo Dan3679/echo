@@ -1,0 +1,18 @@
+/*!
+Theme Name: Echo
+Theme URI: https://example.com/
+Author: Daniel Witt
+Author URI: https://witt-daniel.de/
+Description: g
+Version: 1.0.0
+License: GPL-2.0+
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: echo
+*/
+
+@import "base/reset";
+@import "base/typography";
+@import "layout/header";
+@import "layout/footer";
+@import "components/buttons";
+@import "templates/vc-template-example";
