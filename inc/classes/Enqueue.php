@@ -13,11 +13,12 @@ class Enqueue {
     }
 
     public function enqueue_assets() {
+        // Enqueue the compiled and minified CSS file
         wp_enqueue_style(
             'echo-theme-style',
-            get_stylesheet_directory_uri() . '/style.css',
-            ['bootstrap'],
-            filemtime(get_stylesheet_directory() . '/style.css'),
+            get_stylesheet_directory_uri() . '/assets/css/style.min.css', // Update to your compiled CSS path
+            ['bootstrap'], // Optional: If you have other dependencies like Bootstrap
+            filemtime(get_stylesheet_directory() . '/assets/css/style.min.css'), // Use the minified version for caching
             'all'
         );
     }

@@ -10,9 +10,9 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: echo
 */
 
-@import "base/reset";
-@import "base/typography";
-@import "layout/header";
-@import "layout/footer";
-@import "components/buttons";
-@import "templates/vc-template-example";
+@use "base/reset";
+@use "base/typography";
+@use "layout/header";
+@use "layout/footer";
+@use "components/buttons";
+@use "templates/vc-template-example";

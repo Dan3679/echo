@@ -2,7 +2,8 @@ const { src, dest, watch, series, parallel } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
-const autoprefixer = require('gulp-autoprefixer');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 
@@ -10,7 +11,7 @@ const concat = require('gulp-concat');
 const paths = {
     scss: {
         src: 'assets/scss/style.scss',
-        dest: './',
+        dest: './assets/css/min',
         watch: 'assets/scss/**/*.scss'
     },
     js: {
@@ -25,7 +26,7 @@ function compileSass() {
     return src(paths.scss.src)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer())
+        .pipe(postcss([autoprefixer()])) // <--- this line replaces the old autoprefixer()
         .pipe(cleanCSS())
         .pipe(sourcemaps.write('.'))
         .pipe(dest(paths.scss.dest));
@@ -42,8 +43,8 @@ function minifyJs() {
 }
 
 function watchFiles() {
-    watch(paths.scss.watch, compileSass);
-    watch(paths.js.src, minifyJs);
+    watch(paths.scss.watch, { usePolling: true }, compileSass);
+    watch(paths.js.src, { usePolling: true }, minifyJs);
 }
 
 exports.build = parallel(compileSass, minifyJs);
