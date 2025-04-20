@@ -1,8 +1,13 @@
 <?php
-// functions.php
 
-// Load the autoloader
-require_once get_template_directory() . '/inc/helpers/Autoloader.php';
+// Define theme root constants
+define('ECHO_THEME_DIR', get_template_directory());
+define('ECHO_THEME_URI', get_template_directory_uri());
 
-// Boot up the theme
-\Echo\Classes\Theme::get_instance();
+// Load Composer-style autoloader
+require_once ECHO_THEME_DIR . '/inc/helpers/autoloader.php';
+
+// Kick off the theme setup class
+if (class_exists('\Echo\Theme')) {
+    \Echo\Theme::get_instance();
+}
