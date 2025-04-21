@@ -3,7 +3,7 @@ namespace Echo\Classes;
 
 use Echo\Traits\Singleton;
 
-class ImageSizes {
+class RegisterImageSizes {
     use Singleton;
 
     protected function init() {

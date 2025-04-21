@@ -3,7 +3,7 @@ namespace Echo\Classes;
 
 use Echo\Traits\Singleton;
 
-class ThemeSupport {
+class THEME_SUPPORT {
     use Singleton;
 
     protected function init() {
