@@ -4,13 +4,10 @@ namespace Echo\Classes;
 
 use Echo\Traits\Singleton;
 
-class SETTINGS_PAGE {
+class SettingsPage {
     use Singleton;
 
     protected function init() {
-        error_log('SettingsPage init called');
-
-        wp_die('SettingsPage class initialized');  // Debugging
         // Ensure settings page is hooked into the admin menu and settings registration.
         add_action('admin_menu', [$this, 'add_settings_page']);
         add_action('admin_init', [$this, 'register_settings']);
@@ -25,7 +22,7 @@ class SETTINGS_PAGE {
             'echo-site-settings',
             [$this, 'render_settings_page'],
             'dashicons-admin-generic',
-            6
+            60
         );
     }
 
@@ -47,50 +44,135 @@ class SETTINGS_PAGE {
 
     // Register settings and fields
     public function register_settings() {
-        register_setting('echo_settings', 'echo_company_address');
-        register_setting('echo_settings', 'echo_facebook_url');
-        register_setting('echo_settings', 'echo_footer_logo');
+        // Register settings for all fields
+        register_setting('echo_settings', 'echo_company_info');
+        register_setting('echo_settings', 'echo_footer');
+        register_setting('echo_settings', 'echo_social_media');
 
-        // Add a section for general site info
+        // Add sections for each group of fields
         add_settings_section(
-            'echo_main_section',
-            __('General Site Info', 'echo'),
+            'echo_company_info_section',
+            __('Company Info', 'echo'),
             null,
             'echo-site-settings'
         );
 
-        // Add individual settings fields
+        // Add individual fields for Company Info
+        add_settings_field(
+            'company_name',
+            __('Company Name', 'echo'),
+            function () {
+                $value = get_option('echo_company_info')['company_name'] ?? '';
+                echo '<input type="text" name="echo_company_info[company_name]" value="' . esc_attr($value) . '" class="regular-text">';
+            },
+            'echo-site-settings',
+            'echo_company_info_section'
+        );
+
         add_settings_field(
             'company_address',
             __('Company Address', 'echo'),
             function () {
-                $value = get_option('echo_company_address');
-                echo '<input type="text" name="echo_company_address" value="' . esc_attr($value) . '" class="regular-text">';
+                $value = get_option('echo_company_info')['company_address'] ?? '';
+                echo '<textarea name="echo_company_info[company_address]" class="regular-text">' . esc_textarea($value) . '</textarea>';
             },
             'echo-site-settings',
-            'echo_main_section'
+            'echo_company_info_section'
         );
 
+        add_settings_field(
+            'phone_number',
+            __('Phone Number', 'echo'),
+            function () {
+                $value = get_option('echo_company_info')['phone_number'] ?? '';
+                echo '<input type="text" name="echo_company_info[phone_number]" value="' . esc_attr($value) . '" class="regular-text">';
+            },
+            'echo-site-settings',
+            'echo_company_info_section'
+        );
+
+        add_settings_field(
+            'company_email',
+            __('Company Email', 'echo'),
+            function () {
+                $value = get_option('echo_company_info')['company_email'] ?? '';
+                echo '<input type="email" name="echo_company_info[company_email]" value="' . esc_attr($value) . '" class="regular-text">';
+            },
+            'echo-site-settings',
+            'echo_company_info_section'
+        );
+
+        // Add section for Footer Info
+        add_settings_section(
+            'echo_footer_section',
+            __('Footer Info', 'echo'),
+            null,
+            'echo-site-settings'
+        );
+
+        // Add fields for Footer Info
+        add_settings_field(
+            'footer_logo',
+            __('Footer Logo', 'echo'),
+            function () {
+                $value = get_option('echo_footer')['footer_logo'] ?? '';
+                echo '<input type="text" name="echo_footer[footer_logo]" value="' . esc_attr($value) . '" class="regular-text">';
+            },
+            'echo-site-settings',
+            'echo_footer_section'
+        );
+
+        add_settings_field(
+            'footer_text',
+            __('Footer Text', 'echo'),
+            function () {
+                $value = get_option('echo_footer')['footer_text'] ?? '';
+                echo '<textarea name="echo_footer[footer_text]" class="regular-text">' . esc_textarea($value) . '</textarea>';
+            },
+            'echo-site-settings',
+            'echo_footer_section'
+        );
+
+        // Add section for Social Media Info
+        add_settings_section(
+            'echo_social_media_section',
+            __('Social Media', 'echo'),
+            null,
+            'echo-site-settings'
+        );
+
+        // Add fields for Social Media Info
         add_settings_field(
             'facebook_url',
             __('Facebook URL', 'echo'),
             function () {
-                $value = get_option('echo_facebook_url');
-                echo '<input type="url" name="echo_facebook_url" value="' . esc_attr($value) . '" class="regular-text">';
+                $value = get_option('echo_social_media')['facebook_url'] ?? '';
+                echo '<input type="url" name="echo_social_media[facebook_url]" value="' . esc_attr($value) . '" class="regular-text">';
             },
             'echo-site-settings',
-            'echo_main_section'
+            'echo_social_media_section'
         );
 
         add_settings_field(
-            'footer_logo',
-            __('Footer Logo URL', 'echo'),
+            'instagram_url',
+            __('Instagram URL', 'echo'),
             function () {
-                $value = get_option('echo_footer_logo');
-                echo '<input type="text" name="echo_footer_logo" value="' . esc_attr($value) . '" class="regular-text">';
+                $value = get_option('echo_social_media')['instagram_url'] ?? '';
+                echo '<input type="url" name="echo_social_media[instagram_url]" value="' . esc_attr($value) . '" class="regular-text">';
             },
             'echo-site-settings',
-            'echo_main_section'
+            'echo_social_media_section'
+        );
+
+        add_settings_field(
+            'linkedin_url',
+            __('LinkedIn URL', 'echo'),
+            function () {
+                $value = get_option('echo_social_media')['linkedin_url'] ?? '';
+                echo '<input type="url" name="echo_social_media[linkedin_url]" value="' . esc_attr($value) . '" class="regular-text">';
+            },
+            'echo-site-settings',
+            'echo_social_media_section'
         );
     }
 }
