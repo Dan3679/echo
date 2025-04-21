@@ -8,8 +8,9 @@ class Enqueue {
 
     protected function init() {
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
-        add_action('wp_enqueue_scripts', [$this, 'dequeue_gutenberg'], 100);
+        add_action('wp_enqueue_scripts', [$this, 'dequeue_gutenberg'], 90);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_bootstrap']);
+        add_action('wp_enqueue_scripts', [$this, 'disable_dashicons'], 100);
     }
 
     public function enqueue_assets() {
@@ -44,5 +45,11 @@ class Enqueue {
         wp_dequeue_style('wp-block-library');
         wp_dequeue_style('wp-block-library-theme');
         wp_dequeue_style('global-styles');
+    }
+
+    public function disable_dashicons() {
+        if (!is_admin() && !current_user_can('edit_posts')) {
+            wp_dequeue_style('dashicons');
+        }
     }
 }
