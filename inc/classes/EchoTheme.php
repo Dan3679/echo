@@ -13,5 +13,6 @@ class EchoTheme {
         RegisterMenus::get_instance();
         RegisterImageSizes::get_instance();
         SettingsPage::get_instance();
+        VCTemplateLoader::get_instance();
     }
 }

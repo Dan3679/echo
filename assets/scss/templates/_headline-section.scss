@@ -1,0 +1,33 @@
+.headline-section {
+  padding: 2rem 1rem;
+
+  .above-headline,
+  .below-headline {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+
+  .headline {
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
+
+  .headline-paragraph {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  &.text-center {
+    text-align: center;
+  }
+
+  &.text-right {
+    text-align: right;
+  }
+
+  &.text-left {
+    text-align: left;
+  }
+}
