@@ -3,7 +3,7 @@ namespace Echo\Classes;
 
 use Echo\Traits\Singleton;
 
-class ENQUEUE {
+class Enqueue {
     use Singleton;
 
     protected function init() {

@@ -3,7 +3,7 @@ namespace Echo\Classes;
 
 use Echo\Traits\Singleton;
 
-class REGISTER_MENUS {
+class RegisterMenus {
     use Singleton;
 
     protected function init() {

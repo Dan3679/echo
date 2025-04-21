@@ -4,14 +4,14 @@ namespace Echo\Classes;
 
 use Echo\Traits\Singleton;
 
-class ECHO_THEME {
+class EchoTheme {
     use Singleton;
 
-    protected function __construct() {
+    protected function init() {
         Enqueue::get_instance();
-        Theme_Support::get_instance();
-        Register_Menus::get_instance();
-        Image_Sizes::get_instance();
-        Settings_Page::get_instance();
+        ThemeSupport::get_instance();
+        RegisterMenus::get_instance();
+        RegisterImageSizes::get_instance();
+        SettingsPage::get_instance();
     }
 }
