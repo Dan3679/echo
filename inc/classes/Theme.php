@@ -9,6 +9,7 @@ class Theme {
 
     protected function init() {
         Enqueue::get_instance();
-        \Echo\Classes\ThemeSupport::get_instance();
+        ThemeSupport::get_instance();
+        MenuRegister::get_instance();
     }
 }
