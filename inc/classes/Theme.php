@@ -11,5 +11,6 @@ class Theme {
         Enqueue::get_instance();
         ThemeSupport::get_instance();
         MenuRegister::get_instance();
+        ImageSizes::get_instance();
     }
 }
