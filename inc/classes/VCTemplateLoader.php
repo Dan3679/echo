@@ -8,7 +8,7 @@ class VCTemplateLoader {
 
     protected function init() {
         add_action('vc_before_init', [$this, 'register_templates']);
-        add_shortcode('hero_block', [new HeadlineSection(), 'render']);
+        add_shortcode('headline_section', [new HeadlineSection(), 'render']);
     }
 
     public function register_templates() {
