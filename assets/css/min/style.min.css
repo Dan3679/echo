@@ -1,0 +1,12 @@
+/*!
+Theme Name: Echo
+Theme URI: https://github.com/Dan3679/echo
+Author: Daniel Witt
+Author URI: https://witt-daniel.de/
+Description: A modern WordPress theme using SCSS, Bootstrap and WPBakery.
+Version: 1.0.0
+License: GPL-2.0+
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: echo
+*/*,::after,::before{margin:0;padding:0;box-sizing:border-box}body{line-height:1.5;font-family:sans-serif;background-color:#fff;color:#000}a{text-decoration:none;color:inherit}ol,ul{list-style:none}img{max-width:100%;display:block}body{font-family:sans-serif;font-size:16px;line-height:1.5;color:#333}header{background-color:#f8f8f8;padding:1rem}footer{background-color:#f1f1f1;padding:1rem;text-align:center}button{padding:.5rem 1rem;background-color:#0073e6;color:#fff;border:none;border-radius:4px;cursor:pointer}.headline-section{padding:2rem 1rem}.headline-section .above-headline,.headline-section .below-headline{font-size:.875rem;color:#666;margin-bottom:.5rem}.headline-section .headline{font-weight:700;margin:.5rem 0}.headline-section .headline-paragraph{margin-top:1rem;font-size:1rem;color:#333}.headline-section.text-center{text-align:center}.headline-section.text-right{text-align:right}.headline-section.text-left{text-align:left}
+/*# sourceMappingURL=style.min.css.map */
