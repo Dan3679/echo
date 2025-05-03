@@ -6,6 +6,7 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
+const rename = require('gulp-rename'); // <-- add this at the top
 
 // Paths
 const paths = {
@@ -26,8 +27,9 @@ function compileSass() {
     return src(paths.scss.src)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(postcss([autoprefixer()])) // <--- this line replaces the old autoprefixer()
+        .pipe(postcss([autoprefixer()]))
         .pipe(cleanCSS())
+        .pipe(rename({ suffix: '.min' })) // <-- this is key
         .pipe(sourcemaps.write('.'))
         .pipe(dest(paths.scss.dest));
 }

@@ -3,6 +3,7 @@
 namespace Echo\Classes;
 
 use Echo\Traits\Singleton;
+use Echo\Debug\TemplateIndicator;
 
 class EchoTheme {
     use Singleton;
@@ -14,5 +15,6 @@ class EchoTheme {
         RegisterImageSizes::get_instance();
         SettingsPage::get_instance();
         VCTemplateLoader::get_instance();
+        TemplateIndicator::get_instance();
     }
 }

@@ -37,6 +37,10 @@ spl_autoload_register(function ($class) {
                 // For 'Echo\VC', map to 'inc/vc-templates/'
                 $directory = 'vc-templates';
                 break;
+            case 'Debug':
+                // For 'Echo\Debug', map to 'inc/debug/'
+                $directory = 'debug';
+                break;
             default:
                 // For other namespaces, fallback to 'classes'
                 $directory = 'classes';
